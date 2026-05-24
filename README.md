@@ -12,11 +12,11 @@ This repository provides a deep-dive, architectural look at manual data preproce
 When training an estimator without pipeline orchestration, the engineer must act as the manual centralized scheduler. This project tracks the exact algorithmic order of operations required to transition raw, multi-type data into clean, mathematically balanced NumPy matrices while rigorously defending against **Data Leakage**.
 
 
-┌──> Age, Fare ──────> Mean/Median Imputation ──> StandardScaler ──┐
-                       │                                                                   │
+                           ┌──> Age, Fare ──────> Mean/Median Imputation ──> StandardScaler  ──┐
+                           │                                                                   │
 Raw Titanic Data Arrays ───┼──> Sex, Embarked ──> Most Frequent Imputation ──> OneHotEncoder ──┼──> np.hstack() ──> DecisionTree/RandomForest
-│                                                                   │
-└──> PassengerId ────> Feature Drop (Irrelevant Noise) ─────────────┘
+                           │                                                                   │
+                           └──> PassengerId ────> Feature Drop (Irrelevant Noise) ─────────────┘
 
 
 ### 1. Hardcoded Dependency & Sequence Mechanics
